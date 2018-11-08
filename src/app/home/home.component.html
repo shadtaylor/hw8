@@ -1,0 +1,20 @@
+<h1>WikiGiphy Combined Search</h1>
+<form [formGroup]="formInput"
+      (ngSubmit)="onSubmit(formInput.value)">
+  <label for="formInput">Search</label>
+  <input type="text"
+         id="formInput"
+         placeholder="Search"
+         [formControl]="formInput.controls['formInput']">
+  <button type="submit">Submit</button>
+</form>
+
+<div *ngIf="wikiData.length !== 0">
+  <h1>Wiki Search</h1>
+  <div *ngFor="let wikiResult of wikiData">{{ wikiResult }}</div>
+</div>
+
+<div *ngIf="giphyData.length !== 0">
+  <h1>Giphy Search</h1>
+  <img *ngFor="let giphyResult of giphyData" src="{{ giphyResult }}">
+</div>
